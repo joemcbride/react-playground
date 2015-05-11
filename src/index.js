@@ -1,5 +1,7 @@
-import Component from './Component';
+import CodeMirrorEditor from './CodeMirrorEditor';
+import Playground from './Playground';
 
 export default {
-  Component
+  CodeMirrorEditor,
+  Playground
 };

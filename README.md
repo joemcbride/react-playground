@@ -1,4 +1,4 @@
-# React starter-kit
+# React Playground
 
 Based off the build system used by [React-Bootstrap][react-bootstrap]
 

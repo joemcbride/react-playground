@@ -24,7 +24,6 @@ if (development) {
   });
 
   app.use(function renderApp(req, res) {
-    console.log('url', req.url);
     if (req.url === '/') {
       let markup = React.renderToString(<App/>);
       let html = React.renderToStaticMarkup(rootFactory({
