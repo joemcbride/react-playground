@@ -1,22 +1,38 @@
 import React from 'react';
-import Editor from './Editor';
+import EditorPlayground from './EditorPlayground';
 
-import babel from 'babel-core/browser';
+if (typeof window !== 'undefined') {
+  require('./styles/root.less');
+}
+
+let example = `
+class MountComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        Inline custom components.
+        <MyComponent/>
+      </div>
+    );
+  }
+}
+
+export default MountComponent;
+`;
 
 class Application extends React.Component {
-
-  transform(code) {
-    return babel.transform(code).code;
-  }
 
   render() {
     return (
       <div>
-        <h1>Code Mirror Editor</h1>
-        <Editor
-          theme="monokai"
-          initialCode="class Something extends React.Component { render(){ return (<div>Yap</div>); } }  export default Something;"
-          transformer={this.transform}/>
+        <div className="header">
+          <h1>React Playground</h1>
+        </div>
+        <div className="content">
+          <EditorPlayground
+            theme="monokai"
+            initialCode={example}/>
+        </div>
       </div>
     );
   }
