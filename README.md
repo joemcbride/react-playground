@@ -1,6 +1,8 @@
 # React Playground
 
->*Note that this is currently a work in progress*
+A customizable live React playground using Code Mirror.
+
+![http://i.imgur.com/1whkXHV.png](http://i.imgur.com/1whkXHV.png)
 
 Based off the build system used by [React-Bootstrap][react-bootstrap]
 
