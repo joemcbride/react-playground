@@ -3,6 +3,7 @@
 npm-debug.log
 node_modules
 amd/
-lib/
 dist/
 docs-built/
+!tools/lib
+!tools/dist
