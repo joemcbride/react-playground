@@ -10,5 +10,5 @@ const IS_MOBILE = typeof navigator !== 'undefined' && (
   );
 
 export default {
-  IS_MOBILE: IS_MOBILE
+  IS_MOBILE: IS_MOBILE != null ? true : false
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {CodeMirror, IS_NODE} from './CodeMirror';
+import {CodeMirror, IS_BROWSER} from './CodeMirrorSettings';
 import {IS_MOBILE} from './is_mobile';
 
 class CodeMirrorEditor extends React.Component {
@@ -12,7 +12,7 @@ class CodeMirrorEditor extends React.Component {
 
   componentDidMount() {
 
-    if (IS_MOBILE || IS_NODE) {
+    if (IS_MOBILE || !IS_BROWSER) {
       return;
     }
 
@@ -26,12 +26,6 @@ class CodeMirrorEditor extends React.Component {
       readOnly: this.props.readOnly
     });
     this.editor.on('change', this.handleChange);
-  }
-
-  componentDidUpdate() {
-    if (this.props.readOnly) {
-      this.editor.setValue(this.props.text);
-    }
   }
 
   handleChange() {
@@ -52,19 +46,19 @@ class CodeMirrorEditor extends React.Component {
     }
 
     return (
-      <div style={this.props.style} className={this.props.className}>
+      <div className={this.props.className}>
         {editor}
       </div>
     );
   }
 }
 
-CodeMirrorEditor.PropTypes = {
+CodeMirrorEditor.propTypes = {
   text: React.PropTypes.string,
   theme: React.PropTypes.string,
   mode: React.PropTypes.string,
   lineNumbers: React.PropTypes.bool,
-  className: React.PropTypes.className,
+  className: React.PropTypes.string,
   readOnly: React.PropTypes.bool,
   onChange: React.PropTypes.func
 };
@@ -72,7 +66,8 @@ CodeMirrorEditor.PropTypes = {
 CodeMirrorEditor.defaultProps = {
   mode: 'javascript',
   theme: 'solarized light',
-  lineNumbers: false
+  lineNumbers: false,
+  readOnly: false
 };
 
 export default CodeMirrorEditor;

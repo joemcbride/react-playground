@@ -1,9 +1,9 @@
 import * as modReact from 'react';
 import CodeMirrorEditor from './CodeMirrorEditor';
 import classNames from 'classnames';
+import {IS_MOBILE} from './is_mobile';
 
 const React = modReact.default;
-
 
 class Playground extends React.Component {
 
@@ -30,8 +30,6 @@ class Playground extends React.Component {
     if (this.props.displayError) {
       return this.props.displayError(error, transformed);
     } else {
-
-      console.log(error, transformed);
 
       return (
         <div className="code-error">
@@ -101,10 +99,22 @@ class Playground extends React.Component {
     codeToggleClasses['code-toggle'] = true;
     codeToggleClasses.expanded = this.state.showEditor;
 
+    if (this.props.toggleClass) {
+      codeToggleClasses[this.props.toggleClass] = true;
+    }
+
     let toggleText = this.state.showEditor ? 'Hide Code' : 'Show Code';
 
+    let playgroundClasses = {};
+    playgroundClasses.playground = true;
+    playgroundClasses.mobile = IS_MOBILE;
+
+    if (this.props.className) {
+      playgroundClasses[this.props.className] = true;
+    }
+
     return (
-      <div className="playground">
+      <div className={classNames(playgroundClasses)}>
         <div className={classNames(exampleClasses)}>
           {this.compile()}
         </div>
@@ -123,7 +133,9 @@ Playground.propTypes = {
   displayError: React.PropTypes.func,
   theme: React.PropTypes.string,
   mode: React.PropTypes.string,
-  lineNumbers: React.PropTypes.bool
+  lineNumbers: React.PropTypes.bool,
+  className: React.PropTypes.string,
+  toggleClass: React.PropTypes.string
 };
 
 Playground.defaultProps = {
