@@ -8,7 +8,8 @@
     "build": "babel-node tools/build-cli.js",
     "lint": "eslint src docs tools webpack webpack.config.js webpack.docs.js",
     "docs": "docs/dev-run",
-    "docs-build": "babel-node tools/build-cli.js --docs-only"
+    "docs-build": "babel-node tools/build-cli.js --docs-only",
+    "rename-css": "babel-node tools/rename-css.js"
   },
   "keywords": [
     "react"

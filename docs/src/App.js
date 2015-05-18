@@ -2,7 +2,7 @@ import React from 'react';
 import EditorPlayground from './EditorPlayground';
 
 if (typeof window !== 'undefined') {
-  require('./styles/root.less');
+  require('./assets/root.less');
 }
 
 let example = `
