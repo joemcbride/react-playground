@@ -1,5 +1,6 @@
 import React from 'react';
 import EditorPlayground from './EditorPlayground';
+import CodeExample from '../../src/CodeExample';
 
 if (typeof window !== 'undefined') {
   require('./assets/root.less');
@@ -32,6 +33,9 @@ class Application extends React.Component {
           <EditorPlayground
             theme="monokai"
             initialCode={example}/>
+          <CodeExample
+            className="cm-s-monokai"
+            codeText={example}/>
         </div>
       </div>
     );
