@@ -17,8 +17,21 @@ const defaultProps = {
 };
 
 class CodeExample extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.update = this.update.bind(this);
+  }
 
   componentDidMount() {
+    this.update();
+  }
+
+  componentDidUpdate() {
+    this.update();
+  }
+
+  update() {
     if (CodeMirror === undefined) {
       return;
     }

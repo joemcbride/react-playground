@@ -23,6 +23,18 @@ export default MountComponent;
 
 class Application extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {example: example};
+
+    this.change = this.change.bind(this);
+  }
+
+  change() {
+    let res = this.state.example = this.state.example + '\nvar = 1;';
+    this.setState({example:res});
+  }
+
   render() {
     return (
       <div>
@@ -32,10 +44,11 @@ class Application extends React.Component {
         <div className="content">
           <EditorPlayground
             theme="monokai"
-            initialCode={example}/>
+            initialCode={this.state.example}/>
           <CodeExample
             className="cm-s-monokai"
-            codeText={example}/>
+            codeText={this.state.example}/>
+          <button onClick={this.change}>Change code</button>
         </div>
       </div>
     );
