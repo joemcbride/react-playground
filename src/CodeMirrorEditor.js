@@ -16,7 +16,7 @@ class CodeMirrorEditor extends React.Component {
       return;
     }
 
-    this.editor = CodeMirror.fromTextArea(this.refs.editor.getDOMNode(), {
+    this.editor = CodeMirror.fromTextArea(this.refs.editor, {
       mode: this.props.mode,
       lineNumbers: this.props.lineNumbers,
       lineWrapping: false,

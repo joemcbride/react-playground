@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import {CodeMirror, IS_BROWSER} from './CodeMirrorSettings';
 
@@ -39,7 +40,7 @@ class CodeExample extends React.Component {
     CodeMirror.runMode(
       this.props.codeText,
       this.props.mode,
-      React.findDOMNode(this).children[0]
+      ReactDOM.findDOMNode(this).children[0]
     );
   }
 
